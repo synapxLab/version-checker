@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>@synapxlab/version-checker - Example</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      max-width: 800px;
+      margin: 50px auto;
+      padding: 20px;
+      line-height: 1.6;
+    }
+    h1 { color: #333; }
+    pre {
+      background: #f4f4f4;
+      padding: 15px;
+      border-radius: 5px;
+      overflow-x: auto;
+    }
+    code { color: #e83e8c; }
+    .note {
+      background: #fff3cd;
+      border-left: 4px solid #ffc107;
+      padding: 12px;
+      margin: 20px 0;
+    }
+  </style>
+</head>
+<body>
+  <h1>@synapxlab/version-checker</h1>
+  <p>Open the browser console to see the version check results.</p>
+
+  <h2>Example 1: Basic usage</h2>
+  <pre><code>checkVersion({
+  currentVersion: '2.4.0',
+  packageName: '@synapxlab/cookie-consent'
+});</code></pre>
+
+  <h2>Example 2: Custom callbacks</h2>
+  <pre><code>checkVersion({
+  currentVersion: '1.0.0',
+  packageName: '@synapxlab/cookie-consent',
+  delay: 2000,
+  chance: 1, // Always execute (for demo)
+  onUpdate: (latest, current) => {
+    alert(`Update: ${current} → ${latest}`);
+  }
+});</code></pre>
+
+  <div class="note">
+    <strong>Note:</strong> This example uses <code>chance: 1</code> to always execute. 
+    In production, use the default <code>0.10</code> for 10% sampling.
+  </div>
+
+  <h2>Example 3: Silent mode with custom UI</h2>
+  <pre><code>checkVersion({
+  currentVersion: '2.4.0',
+  packageName: '@synapxlab/cookie-consent',
+  silent: true,
+  onUpdate: (latest) => {
+    document.body.innerHTML += 
+      `&lt;div class="banner"&gt;v${latest} available!&lt;/div&gt;`;
+  }
+});</code></pre>
+
+  <script type="module">
+    // Import from unpkg CDN
+    import { checkVersion } from 'https://unpkg.com/@synapxlab/version-checker';
+
+    // Example 1: Basic (10% chance, will probably not execute)
+    checkVersion({
+      currentVersion: '2.4.0',
+      packageName: '@synapxlab/cookie-consent'
+    });
+
+    // Example 2: Always execute with alert (for demo purposes)
+    checkVersion({
+      currentVersion: '1.0.0', // Older version to trigger update message
+      packageName: '@synapxlab/cookie-consent',
+      delay: 2000,
+      chance: 1, // 100% for demo
+      onUpdate: (latest, current) => {
+        console.log(`%c🎉 Demo: Update available!`, 'color: green; font-size: 16px;');
+        console.log(`Current: ${current} → Latest: ${latest}`);
+      }
+    });
+
+    // Example 3: Error handling
+    checkVersion({
+      currentVersion: '2.4.0',
+      packageName: '@fake/nonexistent-package',
+      delay: 3000,
+      chance: 1,
+      onError: (err) => {
+        console.error('Version check failed:', err.message);
+      }
+    });
+  </script>
+</body>
+</html>

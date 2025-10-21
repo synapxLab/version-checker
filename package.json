@@ -1,0 +1,45 @@
+{
+  "name": "@synapxlab/version-checker",
+  "version": "1.0.0",
+  "description": "Lightweight browser version checker with smart sampling and privacy-first design",
+  "main": "src/index.js",
+  "module": "src/index.js",
+  "type": "module",
+  "exports": {
+    ".": "./src/index.js"
+  },
+  "files": [
+    "src",
+    "httpdocs",
+    "LICENSE",
+    "README.md"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "version",
+    "check",
+    "update",
+    "browser",
+    "semver",
+    "npm",
+    "registry",
+    "idle",
+    "sampling",
+    "privacy"
+  ],
+  "author": "SynapxLab",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/synapxlab/version-checker.git"
+  },
+  "bugs": {
+    "url": "https://github.com/synapxlab/version-checker/issues"
+  },
+  "homepage": "https://github.com/synapxlab/version-checker#readme",
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}
