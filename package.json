@@ -41,5 +41,14 @@
   "homepage": "https://github.com/synapxlab/version-checker#readme",
   "engines": {
     "node": ">=14.0.0"
+  },
+  "scripts": {
+    "dev": "npx http-server httpdocs -p 8000 -o",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },  
+  "devDependencies": {
+    "jsdom": "^27.0.1",
+    "vitest": "^3.2.4"
   }
 }

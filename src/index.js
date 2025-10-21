@@ -12,7 +12,9 @@
  */
 function compareVersions(v1, v2) {
   const toNum = (s) => {
-    const m = String(s || '').match(/^\d+/);
+    // Enlever les préfixes non-numériques (v, V, etc.)
+    const cleaned = String(s || '').replace(/^[^\d]+/, '');
+    const m = cleaned.match(/^\d+/);
     return m ? parseInt(m[0], 10) : 0;
   };
   const [a = 0, b = 0, c = 0] = String(v1).split('.').map(toNum);

@@ -1,8 +1,8 @@
+
 # @synapxlab/version-checker
 
-> Lightweight browser version checker with smart sampling and privacy-first design
-
 [![npm version](https://img.shields.io/npm/v/@synapxlab/version-checker.svg)](https://www.npmjs.com/package/@synapxlab/version-checker)
+[![tests](https://img.shields.io/badge/tests-8%20passing-brightgreen.svg)](https://github.com/synapxLab/version-checker)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ## Features
